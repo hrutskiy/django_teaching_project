@@ -1,4 +1,23 @@
-db.sqlite3
-.idea/
-*.pyc
+cat > .gitignore << 'EOF'
+# Python
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+
+# SQLite
+db.sqlite3
+
+# IDE
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
+
+# Docker
+*.log
+EOF

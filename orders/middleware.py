@@ -1,9 +1,16 @@
+import time
 
-class SimpleLoggingMiddleware:
+
+class RequestTimingMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
     def __call__(self, request):
-        print(f"Request path: {request.path}")
+        start_time = time.time()
+
         response = self.get_response(request)
+
+        duration = time.time() - start_time
+        response["X-Request-Duration"] = f"{duration:.4f}s"
+
         return response
